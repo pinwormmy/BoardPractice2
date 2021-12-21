@@ -15,6 +15,21 @@
 			VALUES(#{postTitle}, #{postWriter}, #{postContent})
 	</insert>
 	
+	<select id="readPost" parameterType="int" resultType="com.board.practice2.DTO.BoardDTO">
+		SELECT postNum, postTitle, postWriter, postContent, postTime, viewCount
+			FROM board_table
+			WHERE postNum=#{postNum}
+	</select>
 	
-
+	<update id="plusViewCount" parameterType="int">
+		UPDATE board_table
+			SET viewCount = viewCount + 1
+			WHERE postNum=#{postNum}
+	</update>
+	
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM board_table 
+			WHERE postNum=#{postNum}
+	</delete>
+	
 </mapper>

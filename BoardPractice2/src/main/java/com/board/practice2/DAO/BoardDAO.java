@@ -9,4 +9,10 @@ public interface BoardDAO {
 	List<BoardDTO> boardList() throws Exception;
 
 	void submitPost(BoardDTO boardDTO);
+
+	BoardDTO readPost(int postNum);
+
+	void plusViewCount(int postNum);
+
+	void deletePost(int postNum);
 }

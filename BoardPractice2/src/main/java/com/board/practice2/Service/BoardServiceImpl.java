@@ -25,5 +25,21 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.submitPost(boardDTO);
 		
 	}
+
+	@Override
+	public BoardDTO readPost(int postNum) {
+		return boardDAO.readPost(postNum);
+	}
+
+	@Override
+	public void plusViewCount(int postNum) {
+		boardDAO.plusViewCount(postNum);
+	}
+
+	@Override
+	public void deletePost(int postNum) {
+		boardDAO.deletePost(postNum);
+		
+	}
 	
 }

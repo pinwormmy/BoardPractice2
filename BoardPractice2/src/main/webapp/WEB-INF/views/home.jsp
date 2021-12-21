@@ -30,7 +30,9 @@
 		<c:forEach items="${boardList}" var="boardList">
 			<tr>
 				<td>${boardList.postNum}</td>
-				<td>${boardList.postTitle}</td>
+				<td>
+				<a href="/readPost?postNum=${boardList.postNum}">${boardList.postTitle}</a>
+				</td>
 				<td>${boardList.postWriter}</td>
 				<td>${boardList.postTime}</td>
 				<td>${boardList.viewCount}</td>

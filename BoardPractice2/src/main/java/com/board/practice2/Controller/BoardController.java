@@ -19,13 +19,32 @@ public class BoardController {
 	@RequestMapping(value = "/writePost")
 	public String writePost() throws Exception {
 		
-		return "/writePost";
+		return "writePost";
 	}
 	
 	@RequestMapping(value="/submitPost")
 	public String submitPost(BoardDTO boardDTO) throws Exception {
 		
 		boardService.submitPost(boardDTO);
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/readPost")
+	public String readPost(Model model, int postNum) throws Exception {
+		
+		BoardDTO readPost = boardService.readPost(postNum);
+		model.addAttribute("readPost", readPost);
+		
+		boardService.plusViewCount(postNum);
+		
+		return "readPost";
+	}
+	
+	@RequestMapping(value="/deletePost")
+	public String deletePost(int postNum) throws Exception {
+		
+		boardService.deletePost(postNum);
 		
 		return "redirect:/";
 	}
