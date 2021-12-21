@@ -4,10 +4,17 @@
 
 <mapper namespace="boardPractice2.mappers.boardMapper">
 	
-	
 	<select id="boardList" resultType="com.board.practice2.DTO.BoardDTO">
 		SELECT postNum, postTitle, postWriter, postTime, viewCount
 			FROM board_table
+			ORDER BY postNum DESC
 	</select>
+	
+	<insert id="submitPost" parameterType="com.board.practice2.DTO.BoardDTO">
+		INSERT INTO board_table(postTitle, postWriter, postContent)
+			VALUES(#{postTitle}, #{postWriter}, #{postContent})
+	</insert>
+	
+	
 
 </mapper>
