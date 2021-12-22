@@ -32,4 +32,10 @@
 			WHERE postNum=#{postNum}
 	</delete>
 	
+	<update id="submitModifyPost" parameterType="com.board.practice2.DTO.BoardDTO">
+		UPDATE board_table
+			SET postTitle=#{postTitle}, postWriter=#{postWriter}, postContent=#{postContent}
+			WHERE postNum=#{postNum}
+	</update>
+	
 </mapper>

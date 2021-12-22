@@ -1,7 +1,5 @@
 package com.board.practice2.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,5 +45,22 @@ public class BoardController {
 		boardService.deletePost(postNum);
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/modifyPost")
+	public String modifyPost(Model model, int postNum) throws Exception {
+		
+		BoardDTO readPost = boardService.readPost(postNum);
+		model.addAttribute("readPost", readPost);
+		
+		return "modifyPost";
+	}
+	
+	@RequestMapping(value="/submitModifyPost")
+	public String submitModifyPost(BoardDTO boardDTO) throws Exception {
+		
+		boardService.submitModifyPost(boardDTO);
+		
+		return "redirect:/readPost?postNum=" + boardDTO.getPostNum();
 	}
 }

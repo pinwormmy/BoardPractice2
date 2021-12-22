@@ -41,5 +41,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deletePost(postNum);
 		
 	}
+
+	@Override
+	public void submitModifyPost(BoardDTO boardDTO) {
+		boardDAO.submitModifyPost(boardDTO);
+	}
 	
 }

@@ -43,4 +43,9 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.delete(namespace + ".deletePost", postNum);	
 	}
 
+	@Override
+	public void submitModifyPost(BoardDTO boardDTO) {
+		sqlSession.update(namespace + ".submitModifyPost", boardDTO);
+	}
+
 }

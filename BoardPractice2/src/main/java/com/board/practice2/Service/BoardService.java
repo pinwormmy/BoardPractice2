@@ -15,4 +15,6 @@ public interface BoardService {
 	void plusViewCount(int postNum);
 
 	void deletePost(int postNum);
+
+	void submitModifyPost(BoardDTO boardDTO);
 }

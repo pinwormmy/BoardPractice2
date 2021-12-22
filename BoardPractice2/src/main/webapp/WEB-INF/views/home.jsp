@@ -7,6 +7,10 @@
 <head>
 <title>게시판 복습 두번째</title>
 <meta charset="UTF-8" />
+<style>
+	a{text-decoration-line:none; color:black;}
+	a:hover{text-decoration-line:underline;}
+</style>
 </head>
 <body>
 <h3>
