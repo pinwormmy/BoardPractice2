@@ -28,6 +28,24 @@ public class HomeController {
 		boardList = boardService.boardList();
 		
 		model.addAttribute("boardList", boardList);
+		
+		int postLimit = 25;
+		int pageLimit = 10;
+		int pageNum = 1;
+		int postEndNum = pageNum * postLimit - 1;
+		int postStartNum = postEndNum - (postLimit - 1);
+		int pageStartNum = ((int)Math.ceil((float)pageNum / pageLimit) -1) * pageLimit + 1;
+		int pageEndNum = pageStartNum + (pageLimit - 1);
+		int pageMaxNum = (int) Math.ceil((float)boardList.size() / postLimit);
+		if(pageEndNum > pageMaxNum)
+			pageEndNum = pageMaxNum;
+		
+		model.addAttribute("postStartNum", postStartNum);
+		model.addAttribute("postEndNum", postEndNum);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("pageEndNum", pageEndNum);
+		model.addAttribute("pageCurrentNum", pageNum);
+		model.addAttribute("pageMaxNum", pageMaxNum);
 				
 		return "home";
 	}

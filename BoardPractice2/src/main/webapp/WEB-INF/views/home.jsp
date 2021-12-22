@@ -31,7 +31,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${boardList}" var="boardList">
+		<c:forEach items="${boardList}" var="boardList" begin="${postStartNum}" end="${postEndNum}">
 			<tr>
 				<td>${boardList.postNum}</td>
 				<td>
@@ -48,6 +48,26 @@
 <hr>		
 
 <button type="button" onclick="location.href='/writePost'">글쓰기</button>
+<button type="button" onclick="location.href='/'">글목록</button><br>
+
+<c:if test="${pageStartNum > 10}">
+	<a href="/page?pageNum=${pageStartNum - 1}">이전</a>
+</c:if>
+
+
+<c:forEach var="pageNum" begin="${pageStartNum}" end="${pageEndNum}">
+	<c:if test="${pageCurrentNum == pageNum}">
+		<b>${pageNum}</b>
+	</c:if>
+	<c:if test="${pageCurrentNum != pageNum}">
+		<a href="/page?pageNum=${pageNum}"> ${pageNum} </a>
+	</c:if>
+</c:forEach>
+
+<c:if test="${pageEndNum < pageMaxNum}">
+	<a href="/page?pageNum=${pageEndNum + 1}">다음</a>
+</c:if>
+
 
 </body>
 </html>
