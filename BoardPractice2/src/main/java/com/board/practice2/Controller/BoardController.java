@@ -39,6 +39,9 @@ public class BoardController {
 		
 		boardService.plusViewCount(postNum);
 		
+		List<BoardDTO> readComment = boardService.readComment(postNum);
+		model.addAttribute("readComment", readComment);
+		
 		return "readPost";
 	}
 	

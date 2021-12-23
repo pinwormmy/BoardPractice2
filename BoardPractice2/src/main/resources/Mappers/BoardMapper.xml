@@ -38,4 +38,10 @@
 			WHERE postNum=#{postNum}
 	</update>
 	
+	<select id="readComment" resultType="com.board.practice2.DTO.BoardDTO">
+		SELECT postNum, commentNum, commentWriter, commentContent, commentTime
+			FROM comment_table
+			WHERE postNum=#{postNum}
+	</select>
+	
 </mapper>

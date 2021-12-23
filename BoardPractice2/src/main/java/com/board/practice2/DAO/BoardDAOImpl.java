@@ -48,4 +48,9 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update(namespace + ".submitModifyPost", boardDTO);
 	}
 
+	@Override
+	public List<BoardDTO> readComment(int postNum) {
+		return sqlSession.selectList(namespace + ".readComment", postNum);
+	}
+
 }

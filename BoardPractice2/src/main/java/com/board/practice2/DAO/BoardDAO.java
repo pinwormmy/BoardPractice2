@@ -17,4 +17,6 @@ public interface BoardDAO {
 	void deletePost(int postNum);
 
 	void submitModifyPost(BoardDTO boardDTO);
+
+	List<BoardDTO> readComment(int postNum);
 }
