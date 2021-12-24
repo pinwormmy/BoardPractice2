@@ -52,5 +52,20 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.readComment(postNum);
 	}
+
+	@Override
+	public void submitComment(BoardDTO boardDTO) {
+		boardDAO.submitComment(boardDTO);
+	}
+
+	@Override
+	public void deleteComment(int commentNum) {
+		boardDAO.deleteComment(commentNum);		
+	}
+
+	@Override
+	public void updateCommentCount(int postNum) {
+		boardDAO.updateCommentCount(postNum);
+	}
 	
 }

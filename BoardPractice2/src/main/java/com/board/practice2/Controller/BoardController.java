@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.board.practice2.DTO.BoardDTO;
 import com.board.practice2.Service.BoardService;
@@ -78,7 +77,7 @@ public class BoardController {
 		
 		model.addAttribute("boardList", boardList);
 		
-		int postLimit = 25;
+		int postLimit = 15;
 		int pageLimit = 10;
 		int postEndNum = pageNum * postLimit - 1;
 		int postStartNum = postEndNum - (postLimit - 1);
@@ -96,5 +95,23 @@ public class BoardController {
 		model.addAttribute("pageMaxNum", pageMaxNum);
 				
 		return "home";
+	}
+	
+	@RequestMapping(value="/submitComment")
+	public String submitComment(BoardDTO boardDTO) throws Exception {
+		
+		boardService.submitComment(boardDTO);
+		boardService.updateCommentCount(boardDTO.getPostNum());
+		
+		return "redirect:/readPost?postNum=" + boardDTO.getPostNum();
+	}
+	
+	@RequestMapping(value="/deleteComment")
+	public String deleteComment(BoardDTO boardDTO) throws Exception {
+		
+		boardService.deleteComment(boardDTO.getCommentNum());
+		boardService.updateCommentCount(boardDTO.getPostNum());
+		
+		return "redirect:/readPost?postNum=" + boardDTO.getPostNum();
 	}
 }

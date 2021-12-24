@@ -5,7 +5,7 @@
 <mapper namespace="boardPractice2.mappers.boardMapper">
 	
 	<select id="boardList" resultType="com.board.practice2.DTO.BoardDTO">
-		SELECT postNum, postTitle, postWriter, postTime, viewCount
+		SELECT postNum, postTitle, postWriter, postTime, viewCount, commentCount
 			FROM board_table
 			ORDER BY postNum DESC
 	</select>
@@ -43,5 +43,24 @@
 			FROM comment_table
 			WHERE postNum=#{postNum}
 	</select>
+	
+	<insert id="submitComment" parameterType="com.board.practice2.DTO.BoardDTO">
+		INSERT INTO comment_table(postNum, commentWriter, commentContent)
+			VALUES(#{postNum}, #{commentWriter}, #{commentContent})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM comment_table 
+			WHERE commentNum=#{commentNum}
+	</delete>
+	
+	<update id="updateCommentCount" parameterType="int">
+		UPDATE board_table
+			SET commentCount=
+				(SELECT COUNT(commentNum) 
+					FROM comment_table 
+					WHERE postNum=#{postNum})
+			WHERE postNum=#{postNum}
+	</update>
 	
 </mapper>

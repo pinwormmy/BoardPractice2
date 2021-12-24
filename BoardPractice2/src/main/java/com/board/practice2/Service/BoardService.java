@@ -19,4 +19,10 @@ public interface BoardService {
 	void submitModifyPost(BoardDTO boardDTO);
 
 	List<BoardDTO> readComment(int postNum);
+
+	void submitComment(BoardDTO boardDTO);
+
+	void deleteComment(int commentNum);
+
+	void updateCommentCount(int postNum);
 }

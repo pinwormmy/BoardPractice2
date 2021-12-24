@@ -53,4 +53,19 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace + ".readComment", postNum);
 	}
 
+	@Override
+	public void submitComment(BoardDTO boardDTO) {
+		sqlSession.insert(namespace + ".submitComment", boardDTO);
+	}
+
+	@Override
+	public void deleteComment(int commentNum) {
+		sqlSession.delete(namespace + ".deleteComment", commentNum);	
+	}
+
+	@Override
+	public void updateCommentCount(int postNum) {
+		sqlSession.update(namespace + ".updateCommentCount", postNum);
+	}
+
 }

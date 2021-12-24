@@ -10,6 +10,15 @@
 <style>
 	a{text-decoration-line:none; color:black;}
 	a:hover{text-decoration-line:underline;}
+	table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  	}
+  	th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+	}
 </style>
 </head>
 <body>
@@ -36,6 +45,9 @@
 				<td>${boardList.postNum}</td>
 				<td>
 				<a href="/readPost?postNum=${boardList.postNum}">${boardList.postTitle}</a>
+				<c:if test="${boardList.commentCount > 0}">
+				<span style="color:grey;">[${boardList.commentCount}]</span>
+				</c:if> 
 				</td>
 				<td>${boardList.postWriter}</td>
 				<td>${boardList.postTime}</td>
