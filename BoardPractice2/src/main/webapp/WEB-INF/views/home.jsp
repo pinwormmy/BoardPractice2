@@ -80,6 +80,16 @@
 	<a href="/page?pageNum=${pageEndNum + 1}">다음</a>
 </c:if>
 
-
+<form action="/search">
+	<select name="searchOption">
+		<option value="searchTitleAndContent">제목+내용</option>
+		<option value="searchTitle">제목</option>
+		<option value="searchContent">내용</option>
+		<option value="searchWriter">작성자</option>
+	</select>
+	<input type="text" name="searchKeyword">
+	<button>검색</button>
+</form>
+	
 </body>
 </html>

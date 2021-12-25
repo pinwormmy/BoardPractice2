@@ -1,5 +1,6 @@
 package com.board.practice2.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -66,6 +67,16 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void updateCommentCount(int postNum) {
 		sqlSession.update(namespace + ".updateCommentCount", postNum);
+	}
+
+	@Override
+	public List<BoardDTO> searchList(String searchOption, String saerchKeyword) {
+		
+		HashMap<String, String> searchInfo = new HashMap<String, String>();
+		searchInfo.put("searchOption", searchOption);
+		searchInfo.put("saerchKeyword", saerchKeyword);
+		
+		return sqlSession.selectList(namespace + ".searchList", searchInfo);
 	}
 
 }

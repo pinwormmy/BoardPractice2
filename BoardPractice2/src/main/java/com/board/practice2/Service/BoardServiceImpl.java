@@ -67,5 +67,10 @@ public class BoardServiceImpl implements BoardService {
 	public void updateCommentCount(int postNum) {
 		boardDAO.updateCommentCount(postNum);
 	}
+
+	@Override
+	public List<BoardDTO> searchList(String searchOption, String saerchKeyword) throws Exception {
+		return boardDAO.searchList(searchOption, saerchKeyword);
+	}
 	
 }

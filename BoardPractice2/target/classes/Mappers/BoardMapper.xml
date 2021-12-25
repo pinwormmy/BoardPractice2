@@ -63,4 +63,24 @@
 			WHERE postNum=#{postNum}
 	</update>
 	
+	<select id="searchList" parameterType="HashMap" resultType="com.board.practice2.DTO.BoardDTO">
+		SELECT postNum, postTitle, postWriter, postTime, viewCount, commentCount
+			FROM board_table
+			
+			<if test= 'searchOption.equals("searchTitleAndContent")' >
+				WHERE postTitle or postContent LIKE concat('%', #{searchKeyword}, '%')
+			</if>
+			<if test= 'searchOption.equals("postTitle")' >
+				WHERE postTitle LIKE concat('%', #{searchKeyword}, '%')
+			</if>
+			<if test= 'searchOption.equals("searchContent")' >
+				WHERE postContent LIKE concat('%', #{searchKeyword}, '%')
+			</if>
+			<if test= 'searchOption.equals("searchWriter")' >
+				WHERE postWriter LIKE concat('%', #{searchKeyword}, '%')
+			</if>
+			
+			ORDER BY postNum DESC
+	</select>
+	
 </mapper>

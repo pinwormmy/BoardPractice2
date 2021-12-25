@@ -25,4 +25,6 @@ public interface BoardDAO {
 	void deleteComment(int commentNum);
 
 	void updateCommentCount(int postNum);
+
+	List<BoardDTO> searchList(String searchOption, String saerchKeyword);
 }
