@@ -117,10 +117,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "/search")
 	public String search(Model model, String searchOption, String searchKeyword) throws Exception {
-		
-		System.out.println(searchOption + searchKeyword);
-		
-		List<BoardDTO> searchList = boardService.searchList(searchOption, searchKeyword);
+				
+		List<BoardDTO> searchList = null; 
+		searchList = boardService.searchList(searchOption, searchKeyword);
 		
 		model.addAttribute("boardList", searchList);
 		

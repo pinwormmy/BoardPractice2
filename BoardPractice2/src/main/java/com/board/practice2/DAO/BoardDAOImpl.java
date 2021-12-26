@@ -70,11 +70,11 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> searchList(String searchOption, String saerchKeyword) {
+	public List<BoardDTO> searchList(String searchOption, String searchKeyword) {
 		
 		HashMap<String, String> searchInfo = new HashMap<String, String>();
 		searchInfo.put("searchOption", searchOption);
-		searchInfo.put("saerchKeyword", saerchKeyword);
+		searchInfo.put("searchKeyword", searchKeyword);
 		
 		return sqlSession.selectList(namespace + ".searchList", searchInfo);
 	}

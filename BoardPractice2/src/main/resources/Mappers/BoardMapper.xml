@@ -67,16 +67,16 @@
 		SELECT postNum, postTitle, postWriter, postTime, viewCount, commentCount
 			FROM board_table
 			
-			<if test= 'searchOption.equals("searchTitleAndContent")' >
+			<if test='searchOption.equals("searchTitleAndContent")'>
 				WHERE postTitle or postContent LIKE concat('%', #{searchKeyword}, '%')
 			</if>
-			<if test= 'searchOption.equals("postTitle")' >
+			<if test='searchOption.equals("searchTitle")'>
 				WHERE postTitle LIKE concat('%', #{searchKeyword}, '%')
 			</if>
-			<if test= 'searchOption.equals("searchContent")' >
+			<if test='searchOption.equals("searchContent")'>
 				WHERE postContent LIKE concat('%', #{searchKeyword}, '%')
 			</if>
-			<if test= 'searchOption.equals("searchWriter")' >
+			<if test='searchOption.equals("searchWriter")'>
 				WHERE postWriter LIKE concat('%', #{searchKeyword}, '%')
 			</if>
 			
