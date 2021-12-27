@@ -87,6 +87,7 @@
 		<option value="searchContent">내용</option>
 		<option value="searchWriter">작성자</option>
 	</select>
+	<input type="hidden" name="pageNum" value="1">
 	<input type="text" name="searchKeyword">
 	<button>검색</button>
 </form>

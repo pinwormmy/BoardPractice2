@@ -29,7 +29,7 @@ public class HomeController {
 		
 		model.addAttribute("boardList", boardList);
 		
-		int postLimit = 15;
+		int postLimit = 12;
 		int pageLimit = 10;
 		int pageNum = 1;
 		int postEndNum = pageNum * postLimit - 1;

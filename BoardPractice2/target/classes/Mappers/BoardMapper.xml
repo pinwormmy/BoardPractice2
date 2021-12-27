@@ -68,16 +68,17 @@
 			FROM board_table
 			
 			<if test='searchOption.equals("searchTitleAndContent")'>
-				WHERE postTitle or postContent LIKE concat('%', #{searchKeyword}, '%')
+				WHERE postTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+					or postContent LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 			<if test='searchOption.equals("searchTitle")'>
-				WHERE postTitle LIKE concat('%', #{searchKeyword}, '%')
+				WHERE postTitle LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 			<if test='searchOption.equals("searchContent")'>
-				WHERE postContent LIKE concat('%', #{searchKeyword}, '%')
+				WHERE postContent LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 			<if test='searchOption.equals("searchWriter")'>
-				WHERE postWriter LIKE concat('%', #{searchKeyword}, '%')
+				WHERE postWriter LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 			
 			ORDER BY postNum DESC

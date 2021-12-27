@@ -77,7 +77,7 @@ public class BoardController {
 		
 		model.addAttribute("boardList", boardList);
 		
-		int postLimit = 15;
+		int postLimit = 12;
 		int pageLimit = 10;
 		int postEndNum = pageNum * postLimit - 1;
 		int postStartNum = postEndNum - (postLimit - 1);
@@ -116,15 +116,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/search")
-	public String search(Model model, String searchOption, String searchKeyword) throws Exception {
+	public String search(Model model, String searchOption, String searchKeyword, int pageNum) throws Exception {
 				
+		System.out.println(searchOption + searchKeyword + pageNum);
 		List<BoardDTO> searchList = null; 
 		searchList = boardService.searchList(searchOption, searchKeyword);
 		
 		model.addAttribute("boardList", searchList);
 		
-		int pageNum = 1; // 임시
-		int postLimit = 15;
+		int postLimit = 12;
 		int pageLimit = 10;
 		int postEndNum = pageNum * postLimit - 1;
 		int postStartNum = postEndNum - (postLimit - 1);
@@ -140,7 +140,11 @@ public class BoardController {
 		model.addAttribute("pageEndNum", pageEndNum);
 		model.addAttribute("pageCurrentNum", pageNum);
 		model.addAttribute("pageMaxNum", pageMaxNum);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("searchKeyword", searchKeyword);
+		
+		System.out.println("검색게시물수 : " + searchList.size() );
 				
-		return "home";
+		return "search";
 	}
 }
