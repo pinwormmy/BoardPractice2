@@ -84,4 +84,16 @@
 			ORDER BY postNum DESC
 	</select>
 	
+	<insert id="signUp" parameterType="com.board.practice2.DTO.BoardDTO">
+		INSERT INTO member_table(userId, userPassword)
+			VALUES(#{userId}, #{userPassword})
+	</insert>
+	
+	<select id="login" parameterType="com.board.practice2.DTO.BoardDTO" 
+		resultType="com.board.practice2.DTO.BoardDTO">
+		SELECT userId, userPassword
+			FROM member_table
+			WHERE userId=#{userId} and userPassword=#{userPassword}
+	</select>
+	
 </mapper>

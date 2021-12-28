@@ -29,6 +29,21 @@
 <p>한줄 한줄 이해하고 간다!</p>
 <hr>
 
+<c:if test="${loginData == null}">
+	<form action="/login" method="post">
+		ID: <input type="text" name="userId" required>
+		비밀번호: <input type="password" name="userPassword" required>  
+		<button>로그인</button>
+		<button type="button" onclick="location.href='/signUp'">회원가입</button>
+	</form>
+</c:if>
+<c:if test="${loginData != null}">
+	 ${loginData.userId}님이 로그인 중입니도리~
+	 <button type="button" onclick="location.href='/logout'">로그아웃</button>
+	 <br>
+</c:if>
+<br>
+
 <table>
 	<thead>
 		<tr>
@@ -59,7 +74,11 @@
 
 <hr>		
 
-<button type="button" onclick="location.href='/writePost'">글쓰기</button>
+
+<c:if test="${loginData != null}">
+	<button type="button" onclick="location.href='/writePost'">글쓰기</button>
+</c:if>
+
 <button type="button" onclick="location.href='/'">글목록</button><br>
 
 <c:if test="${pageStartNum > 10}">

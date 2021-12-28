@@ -17,6 +17,9 @@ public class BoardDTO {
 	private String commentContent;
 	private Timestamp commentTime;
 	
+	private String userId;
+	private String userPassword;
+	
 	
 	public int getPostNum() {
 		return postNum;
@@ -83,6 +86,18 @@ public class BoardDTO {
 	}
 	public void setCommentTime(Timestamp commentTime) {
 		this.commentTime = commentTime;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
 	

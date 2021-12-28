@@ -8,23 +8,27 @@ public interface BoardService {
 	
 	List<BoardDTO> boardList() throws Exception;
 
-	void submitPost(BoardDTO boardDTO);
+	void submitPost(BoardDTO boardDTO) throws Exception;
 
-	BoardDTO readPost(int postNum);
+	BoardDTO readPost(int postNum) throws Exception;
 
-	void plusViewCount(int postNum);
+	void plusViewCount(int postNum) throws Exception;
 
-	void deletePost(int postNum);
+	void deletePost(int postNum) throws Exception;
 
-	void submitModifyPost(BoardDTO boardDTO);
+	void submitModifyPost(BoardDTO boardDTO) throws Exception;
 
-	List<BoardDTO> readComment(int postNum);
+	List<BoardDTO> readComment(int postNum) throws Exception;
 
-	void submitComment(BoardDTO boardDTO);
+	void submitComment(BoardDTO boardDTO) throws Exception;
 
-	void deleteComment(int commentNum);
+	void deleteComment(int commentNum) throws Exception;
 
-	void updateCommentCount(int postNum);
+	void updateCommentCount(int postNum) throws Exception;
 
 	List<BoardDTO> searchList(String searchOption, String saerchKeyword) throws Exception;
+
+	void signUp(BoardDTO boardDTO) throws Exception;
+
+	BoardDTO login(BoardDTO boardDTO) throws Exception;
 }

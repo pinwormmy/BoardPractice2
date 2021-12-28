@@ -2,10 +2,14 @@ package com.board.practice2.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.board.practice2.DTO.BoardDTO;
 import com.board.practice2.Service.BoardService;
@@ -146,5 +150,41 @@ public class BoardController {
 		System.out.println("검색게시물수 : " + searchList.size() );
 				
 		return "search";
+	}
+	
+	@RequestMapping(value = "/signUp")
+	public String signUp() throws Exception {
+		
+		return "signUp";
+	}
+	
+	@RequestMapping(value = "/submitSignUp")
+	public String submitSignUp(BoardDTO boardDTO) throws Exception {
+		
+		boardService.signUp(boardDTO);
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(BoardDTO boardDTO, HttpServletRequest httpServletRequest) throws Exception {
+		
+		HttpSession httpsession = httpServletRequest.getSession();
+		BoardDTO login = boardService.login(boardDTO);
+		
+		if(login == null)
+			httpsession.setAttribute("loginData", null);
+		else
+			httpsession.setAttribute("loginData", login);
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession httpsession) throws Exception {
+		
+		httpsession.invalidate();
+		
+		return "redirect:/";
 	}
 }

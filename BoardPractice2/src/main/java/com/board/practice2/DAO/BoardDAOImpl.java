@@ -79,4 +79,14 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace + ".searchList", searchInfo);
 	}
 
+	@Override
+	public void signUp(BoardDTO boardDTO) throws Exception {
+		sqlSession.insert(namespace + ".signUp", boardDTO);		
+	}
+
+	@Override
+	public BoardDTO login(BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectOne(namespace + ".login", boardDTO);
+	}
+
 }
